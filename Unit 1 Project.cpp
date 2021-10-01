@@ -6,18 +6,18 @@
 using namespace std;
 
 
-float area, length, height;
+float volume, length, height, width, surfaceArea;
 
 
-void areaCalculate(float a, float b)
+void areaCalculate(float a, float b, float c)
 {
-    float c = a * b;
-    area = 6 * (c * c);
-    cout << area;
+    volume = a * b * c;
+    cout << volume;
 }
-void perimeterCalculate(float a, float b)//***
+void perimeterCalculate(float a, float b, float c)
 {
-    
+    surfaceArea = 2 * (c * a + b * a + b * c);
+    cout << surfaceArea;
 }
 
 int main()
@@ -26,5 +26,12 @@ int main()
     cin >> length;
     cout << "\n\nNow enter the height of the room.\n";
     cin >> height;
+    cout << "\n\nFinaly, enter the width of the room.\n";
+    cin >> width;
+    cout << "\n\nThe area of your room is: ";
+    areaCalculate(length, width, height);
+    cout << "and the surface area is ";
+    perimeterCalculate(length, height, width);
+    cout <<". We will use these to calculate the cost of the renovation.\n\n"
 
 
