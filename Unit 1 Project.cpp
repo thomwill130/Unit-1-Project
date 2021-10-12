@@ -15,7 +15,7 @@ float areaCalculate(float a, float b, float c)
 }
 float surfaceAreaCalculate(float a, float b, float c)
 {
-    return 2 * ((c * a) + (b * a) + (b * c));
+    return 2 * (((c * a) + (b * a) + (b * c)) - (a * c));
 }
 
 int main()
@@ -33,7 +33,7 @@ int main()
     cout << "m^2 and the surface area is ";
     surfaceArea = surfaceAreaCalculate(length, height, width);
     cout << surfaceArea;
-    cout << "m. We will use these to calculate the cost of the renovation.\n\n";
+    cout << "m. Keep in mind there is no need to include the surface area of the floor in this calculation, because we will not be painting the floor. So it has been removed. We will use these to calculate the cost of the renovation.\n\n";
 }
 
 
