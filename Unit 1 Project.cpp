@@ -8,6 +8,7 @@ using namespace std;
 
 //global variables
 float surfaceArea;
+const float tax = 0.13;
 
 //area calculator. a = length, b = height, c = width
 float areaCalculate(float a, float b, float c)
@@ -19,15 +20,25 @@ float surfaceAreaCalculate(float a, float b, float c, float d, float e)
 {
     return 2 * (((c * a) + (b * a) + (b * c)) - (a * c) - (d * 9) - (e * 16));
 }
-
+//amount of paint, *2 because we need 2 coats of paint
+float paintCalculator(float a)
+{
+    return a * 2;
+}
+//material cost calculator, $3 per square meter
 float materialCostPreTax(float a)
 {
     return 3 * a;
 }
+
+float taxCalculate(float a)
+{
+    return a + (a * tax);
+}
 int main()
 {
     //base calculations using return functions
-    float volume, length, height, width, windowAmount, doorAmount;
+    float volume, length, height, width, windowAmount, doorAmount, preTaxPrice, postTaxPrice, paintAmount;
     cout << "Hi and welcome to the renovation calculator. First, we will need to calculate the area and perimeter of the room. To do this, enter the length and height of the room. Remember to use meters for all of these measurements. Enter the length below:\n";
     cin >> length;
     cout << "\nNow enter the height of the room.\n";
@@ -47,8 +58,15 @@ int main()
     cout << "m^2. Keep in mind there is no need to include the surface area of the floor in this calculation, because we will not be painting the floor. So it has been removed. We will use these to calculate the cost of the renovation.\n\n";
     //i want to put a press enter to continue here and then cls for the extra mark for something we havent learned in class
 
-    //calculating materials needed for renovation and cost
-    cout << "Now since we have our calculations for the room, we know that we need to paint " << surfaceArea << " meters squared. Paint costs $3 per square foot. Therefore, our material cost pre-tax is $" << materialCostPreTax(surfaceArea) << ".\n";
+    //something
+    paintAmount = paintCalculator(surfaceArea);
+    preTaxPrice = materialCostPreTax(paintAmount);
+    cout << "Now since we have our calculations for the room, we know that we need to paint " << surfaceArea << " meters squared. Paint costs $3 per square foot and we are painting 2 coats. Therefore, our material cost pre-tax is $" << preTaxPrice << ".\n";
+    postTaxPrice = taxCalculate(preTaxPrice);
+    cout << "\nAfter adding in tax, our final total for materials needed is $" << postTaxPrice << ".\n";
+
+    //calculating wages, time  
+
 }
 
 
