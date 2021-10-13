@@ -30,10 +30,18 @@ float materialCostPreTax(float a)
 {
     return 3 * a;
 }
-
+//tax calculator
 float taxCalculate(float a)
 {
     return a + (a * tax);
+}
+//EXTRA FEATURE #1
+void screenReset()
+{
+    cin.ignore();
+    cout << "\n\nPress any key to continute.";
+    cin.get();
+    system("cls");
 }
 int main()
 {
@@ -56,7 +64,8 @@ int main()
     surfaceArea = surfaceAreaCalculate(length, height, width, windowAmount, doorAmount);
     cout << surfaceArea;
     cout << "m^2. Keep in mind there is no need to include the surface area of the floor in this calculation, because we will not be painting the floor. So it has been removed. We will use these to calculate the cost of the renovation.\n\n";
-    //i want to put a press enter to continue here and then cls for the extra mark for something we havent learned in class
+
+    screenReset();
 
     //something
     paintAmount = paintCalculator(surfaceArea);
@@ -64,6 +73,7 @@ int main()
     cout << "Now since we have our calculations for the room, we know that we need to paint " << surfaceArea << " meters squared. Paint costs $3 per square foot and we are painting 2 coats. Therefore, our material cost pre-tax is $" << preTaxPrice << ".\n";
     postTaxPrice = taxCalculate(preTaxPrice);
     cout << "\nAfter adding in tax, our final total for materials needed is $" << postTaxPrice << ".\n";
+    cout << "Now we know how much the materials will cost.";
 
     //calculating wages, time  
 
