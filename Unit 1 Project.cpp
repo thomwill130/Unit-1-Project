@@ -25,7 +25,7 @@ float paintCalculator(float a)
 {
     return a * 2;
 }
-//material cost calculator, $3 per square meter
+//material cost calculator, $3 per square foot
 float materialCostPreTax(float a)
 {
     return 3 * a;
@@ -35,7 +35,22 @@ float taxCalculate(float a)
 {
     return a + (a * tax);
 }
-//EXTRA FEATURE #1
+//66 square feet per hour
+float timeCalculator(float a)
+{
+    return (a / 66);
+}
+// time x the price per hour
+float wageCalculator(float a)
+{
+    return a * (22.50);
+}
+//adding cost of time and materials
+float finalTotal(float a, float b)
+{
+    return a + b;
+}
+//CHALLENGE: EXTRA FEATURE #1
 void screenReset()
 {
     cin.ignore();
@@ -43,11 +58,14 @@ void screenReset()
     cin.get();
     system("cls");
 }
+
+
+//main
 int main()
 {
     //base calculations using return functions
-    float volume, length, height, width, windowAmount, doorAmount, preTaxPrice, postTaxPrice, paintAmount;
-    cout << "Hi and welcome to the renovation calculator. First, we will need to calculate the area and perimeter of the room. To do this, enter the length and height of the room. Remember to use meters for all of these measurements. Enter the length below:\n";
+    float volume, length, height, width, windowAmount, doorAmount, preTaxPrice, postTaxPrice, paintAmount, time, wages, finalFinalTotal;
+    cout << "Hi and welcome to the renovation calculator. First, we will need to calculate the area and perimeter of the room. To do this, enter the length and height of the room. Remember to use feet for all of these measurements. Enter the length below:\n";
     cin >> length;
     cout << "\nNow enter the height of the room.\n";
     cin >> height;
@@ -67,16 +85,28 @@ int main()
 
     screenReset();
 
-    //something
+    //calculating and outputting material cost
     paintAmount = paintCalculator(surfaceArea);
     preTaxPrice = materialCostPreTax(paintAmount);
-    cout << "Now since we have our calculations for the room, we know that we need to paint " << surfaceArea << " meters squared. Paint costs $3 per square foot and we are painting 2 coats. Therefore, our material cost pre-tax is $" << preTaxPrice << ".\n";
+    cout << "Now since we have our calculations for the room, we know that we need to paint " << surfaceArea << " square feet. Paint costs $3 per square foot and we are painting 2 coats. Therefore, our material cost pre-tax is $" << preTaxPrice << ".\n";
     postTaxPrice = taxCalculate(preTaxPrice);
     cout << "\nAfter adding in tax, our final total for materials needed is $" << postTaxPrice << ".\n";
-    cout << "Now we know how much the materials will cost.";
 
     //calculating wages, time  
+    time = timeCalculator(surfaceArea);
+    wages = wageCalculator(time);
+    cout << "\nNow we need just need to find out how many hours the painting will take, and then find out how much it will cost for those hours.";
+    cout << "\n\nThe painting will take " << time << " hours. Each hour cost $22.50 including taxes, so for that time it will cost $" << wages << ".";
+
+    screenReset();
+
+    cout << "Finally, we are going to calculate our final costs and print a receipt.\n\n";
+    cout << "To buy the materials needed for this renovation, it will cost $" << postTaxPrice << ". The price of the workers hours is $" << wages << ". If we combine the two, your final total including all taxes is:\n\n";
+    finalFinalTotal = finalTotal(postTaxPrice, wages);
+    cout << "$" << finalFinalTotal << ".\n\n\n";
+
+
+    //CHALLENGE: RECEIPT
 
 }
-
 
