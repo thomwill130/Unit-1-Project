@@ -7,7 +7,7 @@ using namespace std;
 
 
 //global variables
-float surfaceArea;
+float surfaceArea, roundV1; // roundV1 is empty variable to use for rounding challenge
 const float tax = 0.13;
 
 //area calculator. a = length, b = height, c = width
@@ -58,13 +58,19 @@ void screenReset()
     cin.get();
     system("cls");
 }
-
+//CHALLENGE: ROUND TO NEAREST 1/2HOUR
+float rounding(float a)
+{
+    roundV1 = a / 30;
+    roundV1 = round(roundV1);
+    return roundV1 * 30;
+}
 
 //main
 int main()
 {
     //base calculations using return functions
-    float volume, length, height, width, windowAmount, doorAmount, preTaxPrice, postTaxPrice, paintAmount, time, wages, finalFinalTotal;
+    float volume, length, height, width, windowAmount, doorAmount, preTaxPrice, postTaxPrice, paintAmount, time, timeRounded, minutes, minutesRounded, hours, wages, finalFinalTotal;
     cout << "Hi and welcome to the renovation calculator. First, we will need to calculate the area and perimeter of the room. To do this, enter the length and height of the room. Remember to use feet for all of these measurements. Enter the length below:\n";
     cin >> length;
     cout << "\nNow enter the height of the room.\n";
@@ -92,8 +98,13 @@ int main()
     postTaxPrice = taxCalculate(preTaxPrice);
     cout << "\nAfter adding in tax, our final total for materials needed is $" << postTaxPrice << ".\n";
 
-    //calculating wages, time  
+    //calculating wages, time  (including challenge but did not calculate wages with rounded time)
     time = timeCalculator(surfaceArea);
+    hours = floor(time);
+    minutes = (time - floor(time)) * 60;
+    minutesRounded = rounding(minutes);
+    timeRounded = hours + minutesRounded;
+    cout << hours << "h " << minutesRounded << "m is the time rounded.";
     wages = wageCalculator(time);
     cout << "\nNow we need just need to find out how many hours the painting will take, and then find out how much it will cost for those hours.";
     cout << "\n\nThe painting will take " << time << " hours. Each hour cost $22.50 including taxes, so for that time it will cost $" << wages << ".";
@@ -108,7 +119,7 @@ int main()
 
 
     //CHALLENGE: ROUND TO NEAREST HALF HOUR
-    cout << round(time)
+    cout << round(time);
 
 
 
