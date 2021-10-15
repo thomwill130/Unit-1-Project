@@ -106,11 +106,25 @@ int main()
     cout << "$" << finalFinalTotal << ".\n\n\n";
 
 
+
+    //CHALLENGE: ROUND TO NEAREST HALF HOUR
+    cout << round(time)
+
+
+
+
+
     //CHALLENGE: RECEIPT
 
 }
 
-void receipt()
+
+
+
+
+
+
+void receipt()//unfinished
 {
     cout << "________________________________________________\n";
     cout << "|                                               |\n";
