@@ -70,6 +70,9 @@ float rounding(float a)
 int main()
 {
     //base calculations using return functions
+
+    system("Color 70"); //CHALLENGE: CHANGE TEXT COLOUR  //also extra feature by changing background colour
+
     float volume, length, height, width, windowAmount, doorAmount, preTaxPrice, postTaxPrice, paintAmount, time, timeRounded, minutes, minutesRounded, hours, wages, finalFinalTotal;
     cout << "Hi and welcome to the renovation calculator. First, we will need to calculate the area and perimeter of the room. To do this, enter the length and height of the room. Remember to use feet for all of these measurements. Enter the length below:\n";
     cin >> length;
@@ -98,7 +101,7 @@ int main()
     postTaxPrice = taxCalculate(preTaxPrice);
     cout << "\nAfter adding in tax, our final total for materials needed is $" << postTaxPrice << ".\n";
 
-    //calculating wages, time  (including challenge but did not calculate wages with rounded time)
+    //calculating wages, time  (including challenge to round time, return functions at top of page)
     time = timeCalculator(surfaceArea);
     hours = floor(time);
     minutes = (time - floor(time)) * 60;
@@ -107,7 +110,8 @@ int main()
     cout << hours << "h " << minutesRounded << "m is the time rounded.";
     wages = wageCalculator(time);
     cout << "\nNow we need just need to find out how many hours the painting will take, and then find out how much it will cost for those hours.";
-    cout << "\n\nThe painting will take " << time << " hours. Each hour cost $22.50 including taxes, so for that time it will cost $" << wages << ".";
+    cout << "\n\nThe painting will take ";
+    cout << hours << "h " << minutesRounded << "m long. Each hour cost $22.50 including taxes, so for that time it will cost $" << wages << ".";
 
     screenReset();
 
@@ -118,40 +122,36 @@ int main()
 
 
 
-    //CHALLENGE: ROUND TO NEAREST HALF HOUR
-    cout << round(time);
+    
+    
 
 
 
 
 
-    //CHALLENGE: RECEIPT
-
-}
-
-
-
-
-
-
-
-void receipt()//unfinished
-{
+    //CHALLENGE: RECEIPT  //you said we didn't have to use a function
     cout << "________________________________________________\n";
     cout << "|                                               |\n";
     cout << "|                    Receipt                    |\n";
     cout << "|-----------------------------------------------|\n";
+    cout << "| Material Price: $" << postTaxPrice << "                      |\n";
+    cout << "|                                               |\n";
+    cout << "| Wages Price: $" << wages << "                         |\n";
     cout << "|                                               |\n";
     cout << "|                                               |\n";
     cout << "|                                               |\n";
     cout << "|                                               |\n";
     cout << "|                                               |\n";
+    cout << "| FINAL TOTAL: $" << finalFinalTotal << "                         |\n";
     cout << "|                                               |\n";
     cout << "|                                               |\n";
     cout << "|                                               |\n";
-    cout << "|                                               |\n";
-    cout << "|                                               |\n";
-    cout << "|                                               |\n";
-    cout << "|                                               |\n";
-
+    cout << "_________________________________________________\n";
 }
+
+
+
+
+
+
+
